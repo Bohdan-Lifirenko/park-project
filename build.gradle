@@ -1,0 +1,46 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+	id 'base'
+}
+
+println'Configuration phase'
+
+defaultTasks 'help'
+
+tasks.register('generateDescriptions', Copy) {
+	println'Exeqution phase'
+
+	group = 'Theme park'
+	description = 'generate descriptions files inside build folder'
+
+	dependsOn("clean")
+
+	from 'description'
+	into "$buildDir/description"
+	filter(ReplaceTokens, tokens: [THEME_PARK_NAME: "Gorly world of darknes"])
+}
+
+tasks.register('zipDescriptions', Zip) {
+	group = 'Theme park'
+	description = 'zip descriptions files inside build folder'
+
+	archiveFileName.set('description.zip')
+	destinationDirectory.set(layout.buildDirectory) // correct way
+	
+	from('description')
+}
+
+tasks.register('myCopy', Copy) {
+	doLast {
+		println 'Do'
+	}
+
+	group = 'Theme park'
+
+	from 'settings.gradle'
+	into buildDir
+}
+
+def text = 123
+print text
