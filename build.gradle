@@ -8,8 +8,48 @@ version '1.0-SNAPSHOT'
 
 import org.apache.tools.ant.filters.ReplaceTokens
 
-task generateDescriptions(type: Copy) {
-    from 'discription'
+tasks.register('generateDsNew', Copy) {
+    from 'description'
+    into "$buildDir/description"
+    filter(ReplaceTokens, tokens: [THEME_PARK_NAME: "Gorly world of darknes"])
+
+    doFirst {
+        println('First')
+    }
+
+    doLast {
+        println('second')
+    }
+}
+
+task generateDsOld(type: Copy) {
+    from 'description'
     into "$buildDir/description"
     filter(ReplaceTokens, tokens: [THEME_PARK_NAME: "Gorly world of darknes"])
 }
+
+tasks.register('sayHello') {
+    doLast {
+        println('Hy')
+    }
+
+    onlyIf {
+        2 == 2 * 1
+    }
+}
+
+tasks.register('deleteDescriptions', Delete) {
+    delete 'build/description'
+}
+
+tasks.named("generateDsNew") {
+    into "$buildDir/description_renamed"
+}
+
+tasks.getByName("generateDsNew") {
+    into "$buildDir/description_renamed_old"
+
+    sleep 3000
+}
+
+println 'configuration'
