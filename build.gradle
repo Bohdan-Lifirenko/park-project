@@ -12,16 +12,6 @@ tasks.register('generateDsNew', Copy) {
     from 'description'
     into "$buildDir/description"
     filter(ReplaceTokens, tokens: [THEME_PARK_NAME: "Gorly world of darknes"])
-
-    doFirst {
-        println('First')
-    }
-
-    doLast {
-        println('second')
-    }
-
-    mustRunAfter generateDsNew_B
 }
 
 TaskProvider<Copy> generateDsNew_B = tasks.register('generateDsNew_B', Copy) {
@@ -34,57 +24,10 @@ TaskProvider<Copy> generateDsNew_B = tasks.register('generateDsNew_B', Copy) {
 }
 
 tasks.register("ZipDs", Zip) {
-    from "$buildDir/description/"
+    from tasks.named("generateDsNew")
     into "descriptions/some/"
     destinationDirectory = layout.buildDirectory.dir("zip")
-    archiveFileName = "description_1.zip"
+    archiveFileName = "description.zip"
 
-    dependsOn generateDsNew, tasks.named("clean"), generateDsNew_B
-    finalizedBy confirmFinished
-
-    doLast {
-        throw new GradleException("Oops!")
-    }
 }
 
-tasks.register("confirmFinished") {
-    doLast {
-        println 'Chain finished'
-    }
-}
-
-tasks.getByName('clean') {
-    mustRunAfter generateDsNew_B
-}
-
-task generateDsOld(type: Copy) {
-    from 'description'
-    into "$buildDir/description"
-    filter(ReplaceTokens, tokens: [THEME_PARK_NAME: "Gorly world of darknes"])
-}
-
-tasks.register('sayHello') {
-    doLast {
-        println('Hy')
-    }
-
-    onlyIf {
-        2 == 2 * 1
-    }
-}
-
-tasks.register('deleteDescriptions', Delete) {
-    delete 'build/description'
-}
-
-//tasks.named("generateDsNew") {
-//    into "$buildDir/description_renamed"
-//}
-//
-//tasks.getByName("generateDsNew") {
-//    into "$buildDir/description_renamed_old"
-//
-//    sleep 3000
-//}
-
-println 'configuration'
