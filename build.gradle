@@ -1,5 +1,23 @@
 plugins {
     id 'base'
+    id("org.barfuin.gradle.taskinfo") version "2.2.0"
+    id 'java'
+}
+
+base {
+    archivesName = 'ds'
+}
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils
+    implementation ('commons-beanutils:commons-beanutils:1.11.0') {
+        exclude group: 'commons-collections', module: 'commons-collections'
+    }
 }
 
 description 'Just a demo'
@@ -27,7 +45,6 @@ tasks.register("ZipDs", Zip) {
     from tasks.named("generateDsNew")
     into "descriptions/some/"
     destinationDirectory = layout.buildDirectory.dir("zip")
-    archiveFileName = "description.zip"
 
 }
 
