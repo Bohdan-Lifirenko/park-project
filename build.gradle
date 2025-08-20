@@ -27,12 +27,18 @@ version '1.0-SNAPSHOT'
 import org.apache.tools.ant.filters.ReplaceTokens
 
 tasks.register('generateDsNew', Copy) {
+    group "Description"
+    description "create ds in build and tokens"
+
     from 'description'
     into "$buildDir/description"
     filter(ReplaceTokens, tokens: [THEME_PARK_NAME: "Gorly world of darknes"])
 }
 
 TaskProvider<Copy> generateDsNew_B = tasks.register('generateDsNew_B', Copy) {
+    group "Description"
+    description "also have excluded files"
+
     from 'description'
     into "$buildDir/description_B"
 
@@ -42,6 +48,9 @@ TaskProvider<Copy> generateDsNew_B = tasks.register('generateDsNew_B', Copy) {
 }
 
 tasks.register("ZipDs", Zip) {
+    group "Description"
+    description "zip descriptions"
+
     from tasks.named("generateDsNew")
     into "descriptions/some/"
     destinationDirectory = layout.buildDirectory.dir("zip")
