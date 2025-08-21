@@ -1,3 +1,1 @@
-println 'Initalization phase'
-
 rootProject.name = 'park-project'

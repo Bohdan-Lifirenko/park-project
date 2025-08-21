@@ -1,0 +1,4 @@
+running
+waiting for you
+out
+you are asking to many questions
