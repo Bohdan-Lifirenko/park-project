@@ -1,1 +1,2 @@
 https://youtu.be/SJKXJHKTRX8?si=b0oJtmkLzlIBDGc0&t=12325 - build java project
+https://www.youtube.com/watch?v=SJKXJHKTRX8&t=12325s - dependencies in java projects
