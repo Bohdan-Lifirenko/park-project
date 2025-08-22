@@ -1,6 +1,20 @@
 plugins {
-    id 'java'
+    id 'application'
     id("org.barfuin.gradle.taskinfo") version "2.2.0"
+}
+
+application {
+    mainClass = 'com/gradlehero/themepark/RideStatusService'
+}
+
+tasks.register('runJur', JavaExec) {
+    classpath tasks.named('jar').map {
+        it.outputs
+    }
+    classpath configurations.runtimeClasspath
+    mainClass = 'com.gradlehero.themepark.RideStatusService'
+
+    args ' teacups'
 }
 
 tasks.named('jar') {
@@ -22,16 +36,10 @@ ext {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation 'org.apache.commons:commons-lang3:3.18.0'
+
     testImplementation(platform("org.junit:junit-bom:$junitJupiterVersion"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-
-tasks.named('processResources') {
-    include '**/*.txt'
-}
-
-tasks.named('jar') {
-    archiveFileName = 'test.jar'
 }
