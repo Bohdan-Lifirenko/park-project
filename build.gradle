@@ -3,6 +3,8 @@ plugins {
     id("org.barfuin.gradle.taskinfo") version "2.2.0"
 }
 
+import org.apache.tools.ant.filters.ReplaceTokens
+
 tasks.named('jar') {
     manifest {
         attributes('Main-class' : 'com.gradlehero.themepark.RideStatusService')
@@ -17,8 +19,26 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    junitJupiterVersion = '5.7.2'
+}
+
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.7.2"))
+    testImplementation(platform("org.junit:junit-bom:$junitJupiterVersion"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.named("compileJava") {
+    options.verbose = true
+}
+
+//tasks.withType(JavaCompile).configureEach {
+//    options.verbose = true
+//}
+
+tasks.register("myCustomCompile", JavaCompile) {
+    source = fileTree("src/custom/java")
+    destinationDirectory = layout.buildDirectory.dir("custom-classes")
+    classpath = files()
 }
