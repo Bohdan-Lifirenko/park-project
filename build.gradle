@@ -31,5 +31,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     implementation 'org.apache.commons:commons-lang3:3.18.0'
 
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.testng:testng:7.4.0'
+}
+
+tasks.withType(Test).configureEach {
+    useTestNG()
 }
