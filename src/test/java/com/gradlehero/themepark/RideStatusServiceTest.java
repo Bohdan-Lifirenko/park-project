@@ -1,17 +1,16 @@
 package com.gradlehero.themepark;
 
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertNotNull;
-
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class RideStatusServiceTest {
 
-    @Test
-    public void unknowRideCausesFailure() {
-        String rideStatus = RideStatusService.getRideStatus("teacups");
-
+    @ParameterizedTest(name = "{index} gets {0} ride status")
+    @ValueSource(strings = {"rollercoaster", "kogfume", "teacups"})
+    public void getsRideStatus(String ride) {
+        String rideStatus = RideStatusService.getRideStatus(ride);
         assertNotNull(rideStatus);
     }
 }
