@@ -23,6 +23,23 @@ tasks.named('jar') {
     }
 }
 
+tasks.named('check') {
+    dependsOn testing.suites.integrationTest
+}
+
+testing {
+    suites {
+        test {
+            useJUnitJupiter()
+        }
+        integrationTest(JvmTestSuite) {
+            dependencies {
+                implementation project(":")
+            }
+        }
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -30,10 +47,4 @@ repositories {
 dependencies {
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     implementation 'org.apache.commons:commons-lang3:3.18.0'
-
-    testImplementation 'org.testng:testng:7.4.0'
-}
-
-tasks.withType(Test).configureEach {
-    useTestNG()
 }
