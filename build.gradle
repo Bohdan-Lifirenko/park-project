@@ -23,23 +23,13 @@ tasks.named('jar') {
     }
 }
 
-tasks.withType(Test).configureEach {
-    useJUnitPlatform()
-}
-
 repositories {
     mavenCentral()
-}
-
-ext {
-    junitJupiterVersion = '5.7.2'
 }
 
 dependencies {
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     implementation 'org.apache.commons:commons-lang3:3.18.0'
 
-    testImplementation(platform("org.junit:junit-bom:$junitJupiterVersion"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation 'junit:junit:4.13.2'
 }
