@@ -1,39 +1,23 @@
 plugins {
     id 'application'
-    id("org.barfuin.gradle.taskinfo") version "2.2.0"
-    id("org.unbroken-dome.test-sets") version "4.1.0"
+//    id("org.barfuin.gradle.taskinfo") version "2.2.0"
 }
 
 application {
     mainClass = 'com/gradlehero/themepark/RideStatusService'
 }
 
-testSets {
-    integrationTest
-}
-
-tasks.named('check') {
-    dependsOn('integrationTest')
-}
-
-
-tasks.withType(Test).configureEach {
-    useJUnitPlatform()
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 repositories {
     mavenCentral()
 }
 
-ext {
-    junitJupiterVersion = '5.7.2'
-}
-
 dependencies {
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     implementation 'org.apache.commons:commons-lang3:3.18.0'
-
-    testImplementation(platform("org.junit:junit-bom:$junitJupiterVersion"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
