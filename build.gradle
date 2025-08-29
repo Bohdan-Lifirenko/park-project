@@ -9,7 +9,29 @@ application {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(15)
+    }
+}
+
+tasks.register('runJur', JavaExec) {
+    classpath tasks.named('jar').map {
+        it.outputs
+    }
+    classpath configurations.runtimeClasspath
+    mainClass = 'com.gradlehero.themepark.RideStatusService'
+
+    args ' teacups'
+}
+
+tasks.withType(JavaExec).configureEach {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(16)
+    }
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes('Main-class': 'com.gradlehero.themepark.RideStatusService')
     }
 }
 
