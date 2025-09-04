@@ -1,5 +1,9 @@
 package com.gradlehero.themepark;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,22 +14,13 @@ import java.io.InputStream;
 import java.util.Random;
 
 public class RideStatusService {
-    public static void main(String[] args) {
-        if (args.length !=1) {
-            System.out.println("A single ride name must be passed");
-            System.exit(1);
-        }
+    public static ObjectNode getRideStatus(String ride) {
+        List<String> rideStatuses = readFile(StringUtils.trim(String.format("%s.txt", ride)));
+        String rideStatus = rideStatuses.get(new Random().nextInt(rideStatuses.size()));
 
-        String rideName = args[0];
-        String rideStatust = getRideStatus(rideName);
-
-        System.out.printf("Current status of %s is '%s'%n", rideName, rideStatust);
-    }
-
-    public static String getRideStatus(String ride) {
-        List<String> rideStatuses = readFile(String.format("%s.txt", ride));
-
-        return rideStatuses.get(new Random().nextInt(rideStatuses.size()));
+        ObjectNode node = new ObjectMapper().createObjectNode();
+        node.put("status", rideStatus);
+        return node;
     }
 
     private static List<String> readFile(String filename) {

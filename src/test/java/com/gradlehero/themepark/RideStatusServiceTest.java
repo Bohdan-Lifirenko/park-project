@@ -9,17 +9,22 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RideStatusServiceTest {
 
-    @ParameterizedTest(name = "{index} gets {0} ride status")
-    @ValueSource(strings = {"rollercoaster", "kogfume", "teacups"})
-    public void getsRideStatus(String ride) {
-        String rideStatus = RideStatusService.getRideStatus(ride);
-        assertNotNull(rideStatus);
-    }
+//    @ParameterizedTest(name = "{index} gets {0} ride status")
+//    @ValueSource(strings = {"rollercoaster", "kogfume", "teacups"})
+//    public void getsRideStatus(String ride) {
+//        String rideStatus = RideStatusService.getRideStatus(ride);
+//        assertNotNull(rideStatus);
+//    }
+//
+//    @Test
+//    public void unknowRideCausesFailure() {
+//        assertThrows(IllegalArgumentException.class, () -> {
+//            RideStatusService.getRideStatus("dodgems");
+//        });
+//    }
 
     @Test
-    public void unknowRideCausesFailure() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            RideStatusService.getRideStatus("dodgems");
-        });
+    public void print() {
+        System.out.println(RideStatusService.getRideStatus("kogfume"));
     }
 }

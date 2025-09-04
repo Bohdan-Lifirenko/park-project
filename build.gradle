@@ -1,7 +1,46 @@
 plugins {
     id 'java'
-    id("org.barfuin.gradle.taskinfo") version "2.2.0"
+    id 'maven-publish'
+    id("org.barfuin.gradle.taskinfo") version "1.3.1"
 }
+
+group 'com.gradlehero'
+version '0.1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.11'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.4'
+
+    testImplementation(platform("org.junit:junit-bom:5.7.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
+
+
+//tasks.named("run") {
+//    classpath tasks.named('jar').map {
+//        it.outputs
+//    }
+//    classpath configurations.runtimeClasspath
+//    mainClass = 'com.gradlehero.themepark.RideStatusService'
+//
+//    args 'teacups'
+//}
 
 tasks.named('jar') {
     manifest {
@@ -11,14 +50,4 @@ tasks.named('jar') {
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.7.2"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
