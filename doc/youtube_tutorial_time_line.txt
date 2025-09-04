@@ -2,3 +2,4 @@ https://youtu.be/SJKXJHKTRX8?si=b0oJtmkLzlIBDGc0&t=12325 - build java project
 https://www.youtube.com/watch?v=SJKXJHKTRX8&t=12325s - dependencies in java projects
 https://youtu.be/SJKXJHKTRX8?si=k9-n7R3bnqV74RWo&t=14895 - working with java app execution approaches
 https://youtu.be/SJKXJHKTRX8?si=K0g7aOa19cYP9pzR&t=16953 - working with spring
+https://youtu.be/SJKXJHKTRX8?si=dpFYFbHxk55WoTtK&t=17450 - Building Java libraries
