@@ -1,22 +1,20 @@
 plugins {
-    id 'application'
+    id 'war'
+    id 'org.springframework.boot' version '2.5.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    implementation 'com.gradlehero:theme-park-rides-status:0.1.0-SNAPSHOT'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 }
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(16)
     }
-}
-
-application {
-    mainClass = 'com.gradlehero.themepark.ThemeParkApplication'
 }

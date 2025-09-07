@@ -3,3 +3,4 @@ https://www.youtube.com/watch?v=SJKXJHKTRX8&t=12325s - dependencies in java proj
 https://youtu.be/SJKXJHKTRX8?si=k9-n7R3bnqV74RWo&t=14895 - working with java app execution approaches
 https://youtu.be/SJKXJHKTRX8?si=K0g7aOa19cYP9pzR&t=16953 - working with spring
 https://youtu.be/SJKXJHKTRX8?si=dpFYFbHxk55WoTtK&t=17450 - Building Java libraries
+https://youtu.be/SJKXJHKTRX8?si=8nUDdwaBfuZNI6QQ&t=17893 - Deployment using .war files
