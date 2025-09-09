@@ -10,7 +10,11 @@ repositories {
 
 dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation('com.google.guava:guava:31.0.1-jre') {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+
 }
 
 java {

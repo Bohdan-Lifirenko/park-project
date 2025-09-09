@@ -4,3 +4,4 @@ https://youtu.be/SJKXJHKTRX8?si=k9-n7R3bnqV74RWo&t=14895 - working with java app
 https://youtu.be/SJKXJHKTRX8?si=K0g7aOa19cYP9pzR&t=16953 - working with spring
 https://youtu.be/SJKXJHKTRX8?si=dpFYFbHxk55WoTtK&t=17450 - Building Java libraries
 https://youtu.be/SJKXJHKTRX8?si=8nUDdwaBfuZNI6QQ&t=17893 - Deployment using .war files
+https://youtu.be/SJKXJHKTRX8?si=bNS-xTastNsd11w1&t=18233 - Advanced dependency resolution
