@@ -10,10 +10,13 @@ repositories {
 
 dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-    implementation ('org.springframework.boot:spring-boot-starter-web') {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+
+    configurations.implementation {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
-    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 }
 
 java {
