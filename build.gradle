@@ -1,5 +1,5 @@
 plugins {
-    id 'war'
+    id 'application'
     id 'org.springframework.boot' version '2.5.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
@@ -10,15 +10,18 @@ repositories {
 
 dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-    //implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation('com.google.guava:guava:31.0.1-jre') {
-        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    implementation ('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
-
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 }
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(16)
     }
+}
+
+application {
+    mainClass = 'com.gradlehero.themepark.ThemeParkApplication'
 }
