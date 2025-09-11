@@ -27,20 +27,18 @@ publishing {
         }
     }
     repositories {
-        mavenLocal()
+        maven {
+            name = "gitlab"
+            url = uri("https://gitlab.com/api/v4/projects/74330262/packages/maven")
+            credentials {
+                //./gradlew publish -PmavenUsername="token_name" -PmavenPassword="token_pass" - command to publish
+                username = mavenUsername
+                password = mavenPassword
+            }
+        }
+//        mavenLocal()
     }
 }
-
-
-//tasks.named("run") {
-//    classpath tasks.named('jar').map {
-//        it.outputs
-//    }
-//    classpath configurations.runtimeClasspath
-//    mainClass = 'com.gradlehero.themepark.RideStatusService'
-//
-//    args 'teacups'
-//}
 
 tasks.named('jar') {
     manifest {
