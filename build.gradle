@@ -10,6 +10,6 @@ repositories {
 tasks.register('print') {
     doLast {
         //gradle print -PmyPropName="Text"
-        println myPropName
+        println project.property('myPropName')
     }
 }
