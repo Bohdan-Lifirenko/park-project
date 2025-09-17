@@ -2,3 +2,4 @@ println 'Initalization phase'
 
 rootProject.name = 'park-project'
 include 'app'
+include 'service'
