@@ -11,9 +11,9 @@ public class ThemeParkRideController {
     @GetMapping(path = "/rides")
     public Iterator<ThemeParkRide> getRides() {
         return Arrays.asList(
-                new ThemeParkRide("Rollercoaster", "A fast, thrilling ride with steep drops, sharp turns, and loops on winding tracks."),
-                new ThemeParkRide("Log flume", "A water ride where passengers sit in log-shaped boats, gliding along channels and splashing down drops."),
-                new ThemeParkRide("Teacups", "A spinning ride with cup-shaped cars that rotate around a central platform, letting riders spin themselves faster.")
+                new ThemeParkRide("Rollercoaster", "Train ride that speeds you along.", RideStatusService.getRideStatus("rollercoaster"), "images/rollercoaster.jpg"),
+                new ThemeParkRide("Log flume", "Boat ride with plenty of splashes.", RideStatusService.getRideStatus("logflume"), "images/logflume.jpg"),
+                new ThemeParkRide("Teacups", "Spinning ride in a giant tea-cup.", RideStatusService.getRideStatus("teacups"), "images/teacups.jpg")
         ).iterator();
     }
 }

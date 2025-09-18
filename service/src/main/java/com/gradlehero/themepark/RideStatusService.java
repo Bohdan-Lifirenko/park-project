@@ -14,13 +14,10 @@ import java.io.InputStream;
 import java.util.Random;
 
 public class RideStatusService {
-    public static ObjectNode getRideStatus(String ride) {
+    public static String getRideStatus(String ride) {
         List<String> rideStatuses = readFile(StringUtils.trim(String.format("%s.txt", ride)));
-        String rideStatus = rideStatuses.get(new Random().nextInt(rideStatuses.size()));
 
-        ObjectNode node = new ObjectMapper().createObjectNode();
-        node.put("status", rideStatus);
-        return node;
+        return rideStatuses.get(new Random().nextInt(rideStatuses.size()));
     }
 
     private static List<String> readFile(String filename) {
