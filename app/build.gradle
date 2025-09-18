@@ -1,27 +1,20 @@
 plugins {
-    id 'application'
+    id 'java'
+    id 'org.springframework.boot' version '2.5.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
-
-group = 'com.gradlehero'
-version = 'unspecified'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation project(':service')
-
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 }
 
-application {
-    // Define the main class for the application.
-    mainClass = 'com.gradlehero.App'
-}
-
-test {
-    useJUnitPlatform()
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(16)
+    }
 }
